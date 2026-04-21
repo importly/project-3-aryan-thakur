@@ -4,22 +4,18 @@
 
 using namespace std;
 
-int main() {
-    // initialize your main project object
+// Aryan Thakur 75483598
+
+int main(){
     CampusCompass compass;
-
-    // ingest CSV data
-    compass.ParseCSV("data/edges.csv", "data/classes.csv");
-
-    // the below is example code for parsing commandline input
-    int no_of_lines;
-    string command;
-    cin >> no_of_lines;
-    cin.ignore(); // ignore newline that first cin left over
-    for (int i = 0; i < no_of_lines; i++) {
-        getline(cin, command);
-
-        // parse your commands however you see fit
-        compass.ParseCommand(command);
+    compass.parse_csv("data/edges.csv", "data/classes.csv");
+    std::string number_of_commands;
+    getline(std::cin,number_of_commands);
+    int num_commands = stoi(number_of_commands);
+    while (num_commands > 0) {
+        std::string command;
+        getline(std::cin,command);
+        compass.parse_command(command);
+        --num_commands;
     }
 }
